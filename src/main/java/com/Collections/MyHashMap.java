@@ -1,7 +1,5 @@
 package com.Collections;
 
-import java.util.HashMap;
-
 public class MyHashMap <K,V>{
     private final int SIZE = 16;
     private final float LOAD_FACTOR = 0.75f;
