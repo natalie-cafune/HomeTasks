@@ -1,9 +1,6 @@
 package com.Collections;
 
-import java.util.ArrayList;
-
 public class MyArrayList <T> {
-    ArrayList arrayList = new ArrayList();
 
     private final int SIZE = 10;
     //private final int RATE = 4;
