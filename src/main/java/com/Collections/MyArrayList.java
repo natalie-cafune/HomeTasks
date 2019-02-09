@@ -3,7 +3,6 @@ package com.Collections;
 public class MyArrayList <T> {
 
     private final int SIZE = 10;
-    //private final int RATE = 4;
     private Object [] array = new Object[SIZE];
     private int point = 0;
 
@@ -23,13 +22,11 @@ public class MyArrayList <T> {
 
     // returns item by index
     public T get(int index){
-            //написать проверку на отсутствие элемента в ммассиве
         return (T) array[index];
     }
 
     // removes item by index
     public void remove (int index){
-        //if (!array[index]) написать проверку на отсутствие элемента в ммассиве
         for (int i = index; i < point; i++)
             array[i] = array[i+1];
         array[point] = null;
