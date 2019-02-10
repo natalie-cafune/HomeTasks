@@ -7,10 +7,9 @@ public class MyNode <K, V> {
     V value;
     MyNode nextNode;
 
-    public MyNode(int hashCode, K key, V value, MyNode nextNode) {
-        this.hashCode = hashCode;
+    public MyNode( K key, V value) {
+        this.hashCode = key.hashCode();
         this.key = key;
         this.value = value;
-        this.nextNode = nextNode;
     }
 }
