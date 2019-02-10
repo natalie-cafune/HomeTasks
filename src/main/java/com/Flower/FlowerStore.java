@@ -37,12 +37,16 @@ public class FlowerStore {
         return flowers;
     }
 
+    // кошелек магазина
     public int purseCheck (int c, int r, int t){
         return purse = (c* 70) + (r * 100) + (t * 45);
     }
+
+    // перемешивает цветы
     public ArrayList <String> sellSequence (int c, int r, int t){
 
         String [] strings = new String[(c + r + t)];
+
 
         Chamomile [] chamomile = new Chamomile[c];
         for (int i = 0; i < c; i++) {
@@ -61,10 +65,6 @@ public class FlowerStore {
         for (int i = 0; i < t; i++) {
             tulips[i] = new Tulip();
             strings [(c+r) + i ] = tulips[i].getName();
-        }
-//внутри цикла надо корректно перемешать
-        for (int i = 0; i < strings.length; i++){
-
         }
         Random random = new Random();
 

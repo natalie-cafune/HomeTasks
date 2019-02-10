@@ -11,7 +11,7 @@ public abstract class FlowersSaver {
         try {
             FileWriter fileWriter = new FileWriter(path, false);
             for (String string : arrayList){
-                fileWriter.write(string);
+                fileWriter.write(string + " ");
             }
             fileWriter.close();
         } catch (IOException e) {

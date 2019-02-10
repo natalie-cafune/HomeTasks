@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
         ArrayList <String> arrayList = new ArrayList<String>();
         int c,r,t;
         String path = "D://home//flow.txt";
@@ -20,7 +21,8 @@ public class Main {
 
         FlowerStore flowerStore = new FlowerStore();
         System.out.println(flowerStore.sell(c,r,t));
-        arrayList = flowerStore.sell(c,r,t);
+        arrayList = flowerStore.sellSequence(c,r,t);
+        System.out.println(flowerStore.sellSequence(c,r,t));
         System.out.println(flowerStore.purseCheck(c,r,t));
         FlowersSaver.save(path, arrayList);
 
