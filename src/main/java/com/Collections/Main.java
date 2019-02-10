@@ -1,9 +1,5 @@
 package com.Collections;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -51,6 +47,19 @@ public class Main {
         System.out.println(myStack.pop());
         System.out.println(myStack.peek());
         System.out.println(myStack.size());
+
+        MyHashMap <Integer, String> hashMap = new MyHashMap();
+        hashMap.put(1,"Nata");
+        hashMap.put(2,"Kate");
+        hashMap.put(3,"Poly");
+        System.out.println(hashMap.get(1));
+        hashMap.remove(1);
+        hashMap.remove(2);
+        System.out.println(hashMap.size());
+        hashMap.clear();
+        System.out.println(hashMap.size());
+
+
 
 
     }
