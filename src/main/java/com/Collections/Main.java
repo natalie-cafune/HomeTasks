@@ -15,7 +15,7 @@ public class Main {
 
         MyLinkedList <Integer> myLinkedList = new MyLinkedList<Integer>();
 
-       /* myLinkedList.add(23);
+        myLinkedList.add(23);
         myLinkedList.add(50);
         myLinkedList.add(114);
         myLinkedList.size();
@@ -25,7 +25,7 @@ public class Main {
         System.out.println(myLinkedList.get(0));
         System.out.println(myLinkedList.get(1));
 
-        System.out.println();*/
+        System.out.println();
 
         MyQueue <Integer> queue = new MyQueue <Integer>();
         queue.add(1);
