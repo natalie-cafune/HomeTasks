@@ -47,12 +47,6 @@ public class Fruit {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s", fruitType, expirationDate, dateOfDelivery, price);
-    }
-}
-
 
 
 
