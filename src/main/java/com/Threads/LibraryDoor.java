@@ -1,13 +1,6 @@
 package com.Threads;
 
-import java.util.concurrent.Semaphore;
-
 public class LibraryDoor extends Thread {
-    private Semaphore SEMAPHORE = new Semaphore(1, true);
-
-    public LibraryDoor() {
-        this.SEMAPHORE = SEMAPHORE;
-    }
 
     public void run() {
         System.out.println(Thread.currentThread().getName() + " подошел к двери изнутри");
