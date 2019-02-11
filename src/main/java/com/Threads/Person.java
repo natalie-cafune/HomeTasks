@@ -6,17 +6,13 @@ import java.util.concurrent.Semaphore;
 
 public class Person extends Thread {
     CyclicBarrier cyclicBarrier = new CyclicBarrier(1, new LibraryDoor());
-    private int id;
-    Semaphore semaphore;
+    private Semaphore semaphore;
     private int num = 1;
     private int a;
-    private int b;
 
-    public Person(Semaphore semaphore, int id, int a, int b) {
-        this.id = id;
+    public Person(Semaphore semaphore, int a) {
         this.semaphore = semaphore;
         this.a = a;
-        this.b = b;
     }
 
 
@@ -42,6 +38,7 @@ public class Person extends Thread {
         } catch (InterruptedException e) {
             System.out.println(Thread.currentThread().getStackTrace());
         } catch (BrokenBarrierException e) {
+            System.out.println(Thread.currentThread().getStackTrace());
             e.printStackTrace();
         }
     }
