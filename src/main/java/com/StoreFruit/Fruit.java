@@ -7,7 +7,6 @@ public class Fruit {
     private long dateOfDelivery; //дата поставки
     private int price;
 
-
     public Fruit(FruitType fruitType, long expirationDate, long dateOfDelivery, int price) {
         this.fruitType = fruitType;
         this.expirationDate = expirationDate;
@@ -39,18 +38,10 @@ public class Fruit {
         return price;
     }
 
-    /*public void setDateOfDelivery(String dateOfDelivery) {
-        this.dateOfDelivery = dateOfDelivery;
-    }*/
-
     public void setPrice(int price) {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s", fruitType, expirationDate, dateOfDelivery, price);
-    }
 }
 
 
