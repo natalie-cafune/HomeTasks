@@ -9,35 +9,37 @@ import java.util.List;
 
 public class Store {
     private static Gson gson = new Gson();
-
     private ArrayList<Fruit> storehouse = new ArrayList<Fruit>();
 
+    // saves all deliveries
+    public void save(String pathToJsonFile) throws IOException {
+        FileWriter fileWriter = new FileWriter(pathToJsonFile);
+        fileWriter.write(gson.toJson((Store.this).getFruits()));
+        fileWriter.close();
+    }
+
+    // delete the current information from the warehouse and load the new one
     public void load(String pathToJsonFile) throws IOException {
+        ArrayList<Fruit> arrayListFruit = new ArrayList<Fruit>();
+        arrayListFruit.addAll(storehouse);
         storehouse.clear();
+        setArrayList(arrayListFruit);
         addFruits(pathToJsonFile);
     }
 
-    // сохраняет все поставки
-    public void save(String pathToJsonFile) throws IOException {
-        FileWriter fileWriter = new FileWriter(pathToJsonFile);
-        fileWriter.write(gson.toJson((Store.this).storehouse));
-        fileWriter.close();
-
-    }
-
-    // добавляет поставку из формата json
+    // adds delivery from json file
     public void addFruits(String pathToJsonFile) throws IOException {
         FileReader fileReader = new FileReader(pathToJsonFile);
         storehouse.addAll(gson.fromJson(fileReader, Store.class).getFruits());
         fileReader.close();
     }
 
-    // возвращает склад
+    // returns warehouse
     public ArrayList<Fruit> getFruits() {
         return storehouse;
     }
 
-    // возвращает испорченные фрукты к заданной дате
+    // returns the spoiled fruit to the specified date
     public List<Fruit> getSpoiled(Date date) {
 
         List<Fruit> list = new ArrayList<Fruit>();
@@ -51,14 +53,12 @@ public class Store {
         return list;
     }
 
+    // returns a list of ready-to-sell products to the specified date
     public List<Fruit> getAvailableFruits(Date date) {
         List<Fruit> list = new ArrayList<Fruit>();
-
         Date expirationDate = new Date();
-        Date dateOfDelivery = new Date();
         for (int i = 0; i < storehouse.size(); i++) {
             expirationDate.setTime(this.storehouse.get(i).getExpirationDate());
-            dateOfDelivery.setTime(this.storehouse.get(i).getDateOfDelivery());
             if (date.before(expirationDate)) {
                 list.add(storehouse.get(i));
             }
@@ -66,14 +66,12 @@ public class Store {
         return list;
     }
 
+    // returns the products that were delivered to the specified date
     public List<Fruit> getAddedFruits(Date date) {
         List<Fruit> list = new ArrayList<Fruit>();
-
         long longDelivery = date.getTime();
-        Date expirationDate = new Date();
         Date dateOfDelivery = new Date();
         for (int i = 0; i < storehouse.size(); i++) {
-            expirationDate.setTime(this.storehouse.get(i).getExpirationDate());
             dateOfDelivery.setTime(this.storehouse.get(i).getDateOfDelivery());
             if (longDelivery == this.storehouse.get(i).getDateOfDelivery()) {
                 list.add(storehouse.get(i));
@@ -82,21 +80,52 @@ public class Store {
         return list;
     }
 
-    /* public Date getDate() {
-        simpleDateFormat.format(date);
-        return date;
+    // returns the spoiled fruit to the specified type and date
+    public List<Fruit> getSpoiledFruits(Date date, FruitType fruitType) {
+        List<Fruit> list = new ArrayList<Fruit>();
+        Date expirationDate = new Date();
+        for (int i = 0; i < storehouse.size(); i++) {
+            expirationDate.setTime(this.storehouse.get(i).getExpirationDate());
+            if ((date.after(expirationDate)) && fruitType.equals(storehouse.get(i).getFruitType())) {
+                list.add(storehouse.get(i));
+            }
+        }
+        return list;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-        simpleDateFormat.format(date);
+    // returns a list of ready-to-sell products to the specified type and date
+    public List<Fruit> getAvailableFruits(Date date, FruitType fruitType) {
+        List<Fruit> list = new ArrayList<Fruit>();
+        Date expirationDate = new Date();
+        for (int i = 0; i < storehouse.size(); i++) {
+            expirationDate.setTime(this.storehouse.get(i).getExpirationDate());
+            if ((date.before(expirationDate)) && (fruitType.equals(storehouse.get(i).getFruitType()))) {
+                list.add(storehouse.get(i));
+            }
+        }
+        return list;
     }
-*/
+
+    // returns the products that were delivered to the specified type and date
+    public List<Fruit> getAddedFruits(Date date, FruitType fruitType) {
+        List<Fruit> list = new ArrayList<Fruit>();
+        long longDelivery = date.getTime();
+        Date dateOfDelivery = new Date();
+        for (int i = 0; i < storehouse.size(); i++) {
+            dateOfDelivery.setTime(this.storehouse.get(i).getDateOfDelivery());
+            if ((longDelivery == this.storehouse.get(i).getDateOfDelivery()) &&
+                    (fruitType.equals(storehouse.get(i).getFruitType()))) {
+                list.add(storehouse.get(i));
+            }
+        }
+        return list;
+    }
+
     public void setArrayList(ArrayList<Fruit> arrayList) {
         this.storehouse = arrayList;
     }
 
-
+    // adds fruit to the leaf
     public void addFruit(Fruit fruit) {
         storehouse.add(fruit);
     }
