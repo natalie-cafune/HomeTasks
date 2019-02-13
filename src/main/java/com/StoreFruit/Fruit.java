@@ -3,8 +3,8 @@ package com.StoreFruit;
 public class Fruit {
 
     private FruitType fruitType;
-    private long expirationDate; //срок годности
-    private long dateOfDelivery; //дата поставки
+    private long expirationDate;
+    private long dateOfDelivery;
     private int price;
 
     public Fruit(FruitType fruitType, long expirationDate, long dateOfDelivery, int price) {

@@ -1,14 +1,8 @@
 package com.StoreFruit;
 
-// проверить метод addFruits . Не перезаписывает.
-// также проверить методы save и load
-// добавить методы с типом фрукта
-
 import com.alibaba.fastjson.JSON;
 
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -16,42 +10,49 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        Calendar cDel = new GregorianCalendar(2018, 11, 22);
-
         Store store = new Store();
+        Store storeOne = new Store();
+
         Date dateDelivery = new SimpleDateFormat("yyyy-MM-dd").parse("2018-12-22");
+        Date dateSpec = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-11");
+        Date dateExperationOne = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-04");
+        Date dateExperationTwo = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-20");
+        Date dateExperationThree = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-15");
+        Date dateExperationFour = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-10");
+        Date dateExperationFive = new SimpleDateFormat("yyyy-MM-dd").parse("2018-12-31");
 
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-11");
-        Date dateExperation = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-04");
-        Date dateExperation1 = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-20");
-        Date dateExperation2 = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-15");
-        Date dateExperation3 = new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-10");
 
-
-        Fruit kiwi = new Fruit(FruitType.KIWI, dateExperation.getTime(), cDel.getTime().getTime(), 30);
-        Fruit apple = new Fruit(FruitType.APPLE, dateExperation1.getTime(), cDel.getTime().getTime(), 45);
-        Fruit apricot = new Fruit(FruitType.APRICOT, dateExperation2.getTime(), cDel.getTime().getTime(), 50);
-        Fruit banana = new Fruit(FruitType.BANANA, dateExperation3.getTime(), cDel.getTime().getTime(), 22);
+        Fruit kiwi = new Fruit(FruitType.KIWI, dateExperationOne.getTime(), dateDelivery.getTime(), 30);
+        Fruit apple = new Fruit(FruitType.APPLE, dateExperationTwo.getTime(), dateDelivery.getTime(), 45);
+        Fruit apricot = new Fruit(FruitType.APRICOT, dateExperationThree.getTime(), dateDelivery.getTime(), 50);
+        Fruit banana = new Fruit(FruitType.BANANA, dateExperationFour.getTime(), dateDelivery.getTime(), 22);
+        Fruit lime = new Fruit(FruitType.LIME, dateExperationFive.getTime(), dateDelivery.getTime(), 65);
 
         store.addFruit(kiwi);
         store.addFruit(apple);
         store.addFruit(apricot);
         store.addFruit(banana);
+        storeOne.addFruit(lime);
+        storeOne.addFruit(lime);
+
         String jsString = JSON.toJSONString(store);
+        String jsStr = JSON.toJSONString(storeOne);
 
         FileOutputStream fileOutputStream = new FileOutputStream("test.txt");
         byte[] bytes = jsString.getBytes();
         fileOutputStream.write(bytes);
-        store.addFruits("First.json");
-        store.addFruits("Second.json");
-        //store.save("Store.json");
-        //store.load("First.json");
+        bytes = jsStr.getBytes();
+        fileOutputStream.write(bytes);
+
+
+        store.addFruits("FirstDel.json");
+        storeOne.addFruits("SecondDel.json");
+        System.out.println(store.getFruits());
+        store.save("Store.json");
+        store.load("FirstDel.json");
 
         System.out.println(store.getAddedFruits(dateDelivery));
-        System.out.println(store.getSpoiled(date));
-        System.out.println(store.getAvailableFruits(date));
-
-        store.save("B.json");
-
+        System.out.println(store.getSpoiled(dateSpec));
+        System.out.println(store.getAvailableFruits(dateSpec));
     }
 }
