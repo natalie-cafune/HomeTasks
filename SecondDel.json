@@ -1,0 +1,34 @@
+{
+  "fruits": [
+    {
+      "dateOfDelivery": 1545429600000,
+      "expirationDate": 1546552800000,
+      "fruitType": "KIWI",
+      "price": 30
+    },
+    {
+      "dateOfDelivery": 1545429600000,
+      "expirationDate": 1547935200000,
+      "fruitType": "APPLE",
+      "price": 45
+    },
+    {
+      "dateOfDelivery": 1545429600000,
+      "expirationDate": 1547503200000,
+      "fruitType": "APRICOT",
+      "price": 50
+    },
+    {
+      "dateOfDelivery": 1545429600000,
+      "expirationDate": 1547071200000,
+      "fruitType": "BANANA",
+      "price": 22
+    },
+    {
+      "dateOfDelivery": 1545429600000,
+      "expirationDate": 1546207200000,
+      "fruitType": "LIME",
+      "price": 65
+    }
+  ]
+}
