@@ -11,7 +11,6 @@ public class Main {
         thread.start();
 
         try {
-            System.out.println(thread.getName());
             System.out.println(futureTask.get());
         } catch (InterruptedException e) {
             e.printStackTrace();

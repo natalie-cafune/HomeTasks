@@ -4,7 +4,8 @@ import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 public class Calculator implements Callable {
-    Scanner scanner;
+
+    private Scanner scanner;
     private double aNumber;
     private double bNumber;
     private char operation;
@@ -62,15 +63,12 @@ public class Calculator implements Callable {
         switch (op) {
             case '=':
                 boolResult = (a == b);
-                System.out.println(boolResult);
                 break;
             case '>':
                 boolResult = (a > b);
-                System.out.println(boolResult);
                 break;
             case '<':
                 boolResult = (a < b);
-                System.out.println(boolResult);
                 break;
         }
         printResult();
