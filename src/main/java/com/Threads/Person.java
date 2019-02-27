@@ -3,6 +3,7 @@ package com.Threads;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 public class Person extends Thread {
     CyclicBarrier cyclicBarrier = new CyclicBarrier(1, new LibraryDoor());
@@ -14,15 +15,12 @@ public class Person extends Thread {
         this.semaphore = semaphore;
         this.a = a;
     }
-
-
     public void run() {
         System.out.println(Thread.currentThread().getName() + " подошел к двери с улицы!");
         System.out.println(Thread.currentThread().getName() + " пришел ко входу в библиотеку");
         try {
             //Запрашиваем у семафора разрешение на выполнение
             semaphore.acquire();
-
             cyclicBarrier.await();
             System.out.println(Thread.currentThread().getName() + " вошел в библиотеку");
             while (num <= a) {
@@ -30,8 +28,7 @@ public class Person extends Thread {
                 num++;
                 semaphore.release();
                 System.out.println(Thread.currentThread().getName() + " проходит через дверь наружу");
-                sleep(500);
-
+                TimeUnit.SECONDS.sleep(5);
                 System.out.println(Thread.currentThread().getName() + " прошел через дверь наружу");
                 System.out.println(Thread.currentThread().getName() + " вышел из библиотеки");
             }
@@ -41,6 +38,7 @@ public class Person extends Thread {
             System.out.println(Thread.currentThread().getStackTrace());
             e.printStackTrace();
         }
+        semaphore.release();
     }
 }
 

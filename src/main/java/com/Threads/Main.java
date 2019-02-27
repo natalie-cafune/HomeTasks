@@ -2,6 +2,7 @@ package com.Threads;
 
 import java.util.Scanner;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,11 +16,6 @@ public class Main {
         Semaphore sem = new Semaphore(maxAmount);
         for (int i = 0; i < peopleCount; i++) {
             new Person(sem, maxAmount).start();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
