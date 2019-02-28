@@ -1,4 +1,4 @@
-package com.ManyThreads.FirstTask;
+package com.Multithreading.FirstTask;
 
 import java.util.Scanner;
 import java.util.concurrent.Callable;

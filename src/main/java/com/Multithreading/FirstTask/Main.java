@@ -1,4 +1,4 @@
-package com.ManyThreads.FirstTask;
+package com.Multithreading.FirstTask;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
