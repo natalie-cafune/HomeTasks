@@ -73,7 +73,7 @@ public class Calculator implements Callable {
     }
 
     public double getNumber() {
-        System.out.println("Enter a first number : ");
+        System.out.println("Enter a number : ");
         double number = scanner.nextInt();
         return number;
     }
