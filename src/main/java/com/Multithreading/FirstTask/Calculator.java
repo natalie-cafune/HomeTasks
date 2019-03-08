@@ -6,18 +6,15 @@ import java.util.concurrent.Callable;
 public class Calculator implements Callable {
 
     private Scanner scanner;
-    private double aNumber;
-    private double bNumber;
-    private char operation;
 
     public Calculator() {
         this.scanner = new Scanner(System.in);
     }
 
     public double calc() {
-        aNumber = getANumber();
-        bNumber = getBNumber();
-        operation = getOperation();
+        double aNumber = getNumber();
+        double bNumber = getNumber();
+        char operation = getOperation();
         double result = 0;
 
         if ((operation == '=') || (operation == '>') || (operation == '<')) {
@@ -75,16 +72,10 @@ public class Calculator implements Callable {
         return boolResult;
     }
 
-    public double getANumber() {
+    public double getNumber() {
         System.out.println("Enter a first number : ");
-        aNumber = scanner.nextInt();
-        return aNumber;
-    }
-
-    public double getBNumber() {
-        System.out.println("Enter a second number : ");
-        bNumber = scanner.nextInt();
-        return bNumber;
+        double number = scanner.nextInt();
+        return number;
     }
 
     public char getOperation() {
@@ -97,9 +88,9 @@ public class Calculator implements Callable {
                         + "5. % " + "\n"
                         + "6. == " + "\n"
                         + "7. > " + "\n"
-                        + "8. < " + " \n"
+                        + "8. < " + "\n"
         );
-        operation = scanner.next().charAt(0);
+        char operation = scanner.next().charAt(0);
         return operation;
     }
 
