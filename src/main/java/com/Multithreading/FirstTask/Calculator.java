@@ -3,7 +3,7 @@ package com.Multithreading.FirstTask;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
 
-public class Calculator implements Callable {
+public class Calculator implements Callable<Double> {
 
     private Scanner scanner;
 
